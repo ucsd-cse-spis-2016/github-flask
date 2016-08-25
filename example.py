@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
     GitHub Example
     --------------
@@ -17,9 +18,11 @@ DATABASE_URI = 'sqlite:////tmp/github-flask.db'
 SECRET_KEY = 'development key'
 DEBUG = True
 
+import os
+
 # Set these values
-GITHUB_CLIENT_ID = 'XXX'
-GITHUB_CLIENT_SECRET = 'YYY'
+GITHUB_CLIENT_ID = os.environ['GITHUB_CLIENT_ID'] 
+GITHUB_CLIENT_SECRET = os.environ['GITHUB_CLIENT_SECRET']
 
 # setup flask
 app = Flask(__name__)
@@ -122,4 +125,4 @@ def user():
 
 if __name__ == '__main__':
     init_db()
-    app.run(debug=True)
+    app.run(debug=True, port=54321)
